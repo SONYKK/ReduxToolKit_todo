@@ -16,7 +16,10 @@ const NewToDo: FC<NewToDoProps> = ({text, handleInput, handleSubmit}) => {
         value={text}
         onChange={(e) => handleInput(e.target.value)}
       />
-      <button onClick={handleSubmit}>Add ToDo</button>
+      <button onClick={
+        text.trim().length ? handleSubmit : undefined
+      }>Add ToDo
+      </button>
     </label>
   );
 }
