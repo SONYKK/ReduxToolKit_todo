@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import NewToDo from "./components/NewToDo";
+import ToDoList from "./components/ToDoList";
+import { useAppDispatch } from "./store/hooks/hooks";
+import {useState} from 'react'
+import { addTodo } from "./store/toDoSlice";
+
+
 
 function App() {
+
+  const dispatch = useAppDispatch();
+  const [title, setTitle] = useState("");
+
+  const addTask = () => {
+    dispatch(addTodo({title}));
+    setTitle('')
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NewToDo text = {title} handleInput={setTitle} handleSubmit={addTask}/>
+      <ToDoList />
+
     </div>
   );
 }
