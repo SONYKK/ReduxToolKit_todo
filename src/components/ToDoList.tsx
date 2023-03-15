@@ -1,11 +1,10 @@
-import { useSelector } from "react-redux/es/exports";
-import { RootState } from "../store";
 import ToDoItem from "./ToDoItem";
+import {useAppSelector} from "../store/hooks/hooks";
 
 
 function ToDoList() {
   
-  const todos = useSelector((state: RootState)=>state.todo.list)
+  const todos = useAppSelector(state=>state.todos.list)
   
   return (
     <ul>
