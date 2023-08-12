@@ -1,22 +1,26 @@
-import  { FC } from 'react'
+import {FC, memo} from 'react'
+import './NewToDo.css'
 
 interface NewToDoProps {
-  text: string, 
-  handleInput: (str: string)=>void, 
+  text: string,
+  handleInput: (str: string)=>void,
   handleSubmit: (event: React.MouseEvent<HTMLButtonElement>)=>void
-} 
+}
 
 
 const NewToDo: FC<NewToDoProps> = ({text, handleInput, handleSubmit}) => {
-   
+  
   return (
     <label>
       <input
         type="text"
         value={text}
         onChange={(e) => handleInput(e.target.value)}
+        className='input'
       />
-      <button onClick={
+      <button
+          className='button'
+          onClick={
         text.trim().length ? handleSubmit : undefined
       }>Add ToDo
       </button>
@@ -24,4 +28,4 @@ const NewToDo: FC<NewToDoProps> = ({text, handleInput, handleSubmit}) => {
   );
 }
 
-export default NewToDo;
+export default memo(NewToDo);

@@ -1,5 +1,6 @@
 import ToDoItem from "./ToDoItem";
 import {useAppSelector} from "../store/hooks/hooks";
+import {memo} from "react";
 
 
 function ToDoList() {
@@ -17,4 +18,4 @@ function ToDoList() {
   );
 }
 
-export default ToDoList;
+export default memo(ToDoList);

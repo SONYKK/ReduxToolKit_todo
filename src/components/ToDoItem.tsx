@@ -1,6 +1,7 @@
 import { useAppDispatch } from "../store/hooks/hooks";
-import {deleteTodo, toggleStatus} from "../store/toDoSlice";
-import {FC} from 'react'
+import {FC, memo} from 'react'
+import {toggleStatus} from "../store/services/toggleStatus";
+import {deleteTodo} from "../store/services/deleteToDo";
 
 interface TodoItemProps {
   id: string,
@@ -15,6 +16,7 @@ const ToDoItem: FC<TodoItemProps> = ({id, title, completed}) => {
   return (
     <li>
       <input
+        style={{cursor:"pointer"}}
         type="checkbox"
         checked={completed}
         onChange={() => dispatch(toggleStatus(id))}
@@ -30,5 +32,5 @@ const ToDoItem: FC<TodoItemProps> = ({id, title, completed}) => {
   );
 }
 
-export default ToDoItem;
+export default memo(ToDoItem);
 

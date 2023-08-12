@@ -24,4 +24,14 @@ li {
 
 input:checked + span {
   text-decoration: line-through;
-} 
+}
+
+.navbar {
+  background-color: #bfc7e5;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}

@@ -3,7 +3,8 @@ import NewToDo from "./components/NewToDo";
 import ToDoList from "./components/ToDoList";
 import {useAppDispatch, useAppSelector} from "./store/hooks/hooks";
 import {useState, useEffect} from 'react'
-import {addNewTodo, fetchTodos} from "./store/toDoSlice";
+import {addNewTodo} from "./store/services/addNewToDo";
+import {fetchTodos} from "./store/services/fetchToDos";
 
 function App() {
   
@@ -22,7 +23,9 @@ function App() {
 
   return (
     <div className="App">
-      <NewToDo text = {title} handleInput={setTitle} handleSubmit={addTask}/>
+      <div className='navbar'>
+        <NewToDo text = {title} handleInput={setTitle} handleSubmit={addTask}/>
+      </div>
       {loading && <h2>Loading...</h2>}
       {error && <h2>An error occurred:{error} </h2>}
       
